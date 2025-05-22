@@ -46,5 +46,16 @@ This was free(excluding the electricity used by my computer) using Ollama. Accor
 ## Word Cloud
 This was the most straightforward way that I could think of to visualize the messages. I did some cleaning of the sentiment column (The LLM would sometimes choose to add a period at the end of the sentiment, so it was counted as two separate emotions) and generated a script to make a word cloud using the `WordCloud` python package.
 
+## Sentiment Score
+The `sentiment_score.py` script is similarly structured to the `sentiment.py` script, and is designed to be run after assigning a sentiment to each message. The sentiment score assigns a value between 0 (the most negative) and 1 (the most positive) for the sentiment of each row in the database. This took several hours to run using local Ollama. You would be advised to remove the print statement in the script, and again, batching here would be a significant improvement if the output of the LLM was consistent enough.
+
+![sentiment score graph](./sentiment_score_by_year.png)
+
+The above image is a graph of the output of the below query once the sentiment_score has been assigned.
+
+```
+sqlite> select year, avg(sentiment_score) as average_sentiment from content group by year order by year;
+```
+
 ## Why tho?
 I don't know, don't you ever dive deep into data introspection in order to get a better sense of your self, purpose, and how you've grown? #QuantifiedSelf. If the public companies that have advertised to me on Meta can generate over 13 trillion dollars in market value based on my data, maybe I can find some value in it, too.
