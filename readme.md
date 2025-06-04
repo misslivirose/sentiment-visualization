@@ -1,6 +1,6 @@
-# Untitled Sentiment Visualization Project
+# The Data Introspection Project
 
-The Untitled Sentiment Visualization Project (USVP) is the latest in my attempts to make something interesting out of my personal social media archives. Right now, the project consists of a few scripts that I use to consolidate data and information from Facebook and LinkedIn, create a local SQL database, and use a locally running ollama instance to assign a single word sentiment to each message/post.
+The Data Introspection Project is the latest in my attempts to make something interesting out of my personal social media archives. Right now, the project consists of a few scripts that I use to consolidate data and information from Facebook and LinkedIn, create a local SQL database, and use a locally running ollama instance to assign a single word sentiment to each message/post.
 
 ![sentiment wordcloud](sentiment_wordcloud.png)
 
