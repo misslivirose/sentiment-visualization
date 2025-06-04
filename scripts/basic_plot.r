@@ -3,6 +3,8 @@ library(dplyr)
 library(ggplot2)
 library(Polychrome)
 
+setwd("~/GitHub/sentiment-visualization")
+
 con <- dbConnect(RSQLite::SQLite(), 
                       dbname = "./data/db.sqlite")
 
@@ -83,5 +85,47 @@ ggplot(db, aes(x = factor(YEAR), y = SENTIMENT_SCORE, fill = factor(YEAR))) +
     legend.position = "none",  # remove legend if color isn't necessary
     panel.grid.major.y = element_line(color = "gray80")
   )
+
+ggplot(db, aes(x = YEAR, y = SENTIMENT_SCORE)) + geom_point(aes(x=MONTH))
+
+
+
+ggplot(db, aes(x = YEAR, y = SENTIMENT_SCORE)) +
+  geom_point(alpha = 0.2, size = 0.7, color = "steelblue") +
+  geom_smooth(method = "loess", span = 0.1, color = "firebrick", linewidth = 1) +
+  labs(
+    x = "Date",
+    y = "Sentiment Score",
+    title = "Sentiment of All Messages Over Time",
+    subtitle = "LOESS smoothing (span 0.1) over 17 years"
+  ) +
+  theme_minimal()
+
+
+
+library(lubridate)
+
+ggplot(db, aes(y = as.factor(MONTH), x = as.factor(YEAR), fill = SENTIMENT_SCORE)) +
+  geom_tile(color = "white") +
+  scale_fill_gradient2(
+    low    = "firebrick",
+    mid    = "white",
+    high   = "darkgreen",
+    midpoint = 0.5
+  ) +
+  labs(
+    x = "Year",
+    y = "Month",
+    fill = "Avg Sentiment",
+    title = "Monthly Average Sentiment Heatmap",
+    subtitle = "Each tile = average sentiment score for that month"
+  ) +
+  theme_minimal() +
+  theme(
+    axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1)
+  )
+
+
+
 
 dbDisconnect(con)
