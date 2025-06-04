@@ -2,9 +2,8 @@
 
 The Data Introspection Project is the latest in my attempts to make something interesting out of my personal social media archives. Right now, the project consists of a few scripts that I use to consolidate data and information from Facebook and LinkedIn, create a local SQL database, and use a locally running ollama instance to assign a single word sentiment to each message/post.
 
-![sentiment wordcloud](sentiment_wordcloud.png)
-
-_We're starting off with a basic word cloud, but I have high ambitions about where we can go with this._
+![image](https://github.com/user-attachments/assets/0c5a343c-58e3-4d9e-a235-452c6bac4247)
+_The incidents in 2010 and 2012 represent my immaturity in romantic collegiate relationships, if you were curious_
 
 ## Data Preparation
 The scripts assume that you have two .csv files, one from from Facebook (your_name_messages.csv) and one from LinkedIn (Shares.csv). The data has been prepared so that each CSV file has a `Date` column and a `Message` column. The python script `load_to_sql.py` assumes you have a `db.sqlite` database in the `/data/` directory, and handles the import of the files into a new `content` table within `db.sqlite` with the following schema:
