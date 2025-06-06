@@ -17,6 +17,7 @@ CREATE TABLE content (
     SENTIMENT TEXT
 );
 ```
+The `load_to_sql.py` script also assigns the `platform` string automatically based on the file. This will be helpful in doing any kind of visualization or introspection that involves differentiating between how I talk on Facebook vs. LinkedIn.
 
 Optionally, you can create additional tables in the database to map relevant life characteristics (where you live, meaningful relationships) to join the main `content` table on. I have a `relationships` table with the following schema: 
 
@@ -27,8 +28,6 @@ CREATE TABLE relationships (
     PARTNER STRING
 );
 ```
-
-The `load_to_sql.py` script also assigns the `platform` string automatically based on the file. This will be helpful in doing any kind of visualization or introspection that involves differentiating between how I talk on Facebook vs. LinkedIn.
 
 ## Assigning sentiment
 The `sentiment.py` script populates the `sentiment` string through a long series of local Ollama calls. I found that this worked really well with llama3.1, but feel free to test out different models as well. The script parses through each row of the `db.sqlite` database `content` table and sends the `message` string in a request to Ollama with the prompt: "Give a one-word sentiment that best describes the following message. Respond with only one word."
