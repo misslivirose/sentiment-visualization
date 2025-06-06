@@ -18,6 +18,16 @@ CREATE TABLE content (
 );
 ```
 
+Optionally, you can create additional tables in the database to map relevant life characteristics (where you live, meaningful relationships) to join the main `content` table on. I have a `relationships` table with the following schema: 
+
+```
+CREATE TABLE relationships (
+    YEAR INTEGER,
+    MONTH INTEGER,
+    PARTNER STRING
+);
+```
+
 The `load_to_sql.py` script also assigns the `platform` string automatically based on the file. This will be helpful in doing any kind of visualization or introspection that involves differentiating between how I talk on Facebook vs. LinkedIn.
 
 ## Assigning sentiment
