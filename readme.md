@@ -1,10 +1,9 @@
-# Untitled Sentiment Visualization Project
+# The Data Introspection Project
 
-The Untitled Sentiment Visualization Project (USVP) is the latest in my attempts to make something interesting out of my personal social media archives. Right now, the project consists of a few scripts that I use to consolidate data and information from Facebook and LinkedIn, create a local SQL database, and use a locally running ollama instance to assign a single word sentiment to each message/post.
+The Data Introspection Project is the latest in my attempts to make something interesting out of my personal social media archives. Right now, the project consists of a few scripts that I use to consolidate data and information from Facebook and LinkedIn, create a local SQL database, and use a locally running ollama instance to assign a single word sentiment to each message/post.
 
-![sentiment wordcloud](sentiment_wordcloud.png)
-
-_We're starting off with a basic word cloud, but I have high ambitions about where we can go with this._
+![image](https://github.com/user-attachments/assets/0c5a343c-58e3-4d9e-a235-452c6bac4247)
+_The incidents in 2010 and 2012 represent my immaturity in romantic collegiate relationships, if you were curious_
 
 ## Data Preparation
 The scripts assume that you have two .csv files, one from from Facebook (your_name_messages.csv) and one from LinkedIn (Shares.csv). The data has been prepared so that each CSV file has a `Date` column and a `Message` column. The python script `load_to_sql.py` assumes you have a `db.sqlite` database in the `/data/` directory, and handles the import of the files into a new `content` table within `db.sqlite` with the following schema:
@@ -18,8 +17,17 @@ CREATE TABLE content (
     SENTIMENT TEXT
 );
 ```
-
 The `load_to_sql.py` script also assigns the `platform` string automatically based on the file. This will be helpful in doing any kind of visualization or introspection that involves differentiating between how I talk on Facebook vs. LinkedIn.
+
+Optionally, you can create additional tables in the database to map relevant life characteristics (where you live, meaningful relationships) to join the main `content` table on. I have a `relationships` table with the following schema: 
+
+```
+CREATE TABLE relationships (
+    YEAR INTEGER,
+    MONTH INTEGER,
+    PARTNER STRING
+);
+```
 
 ## Assigning sentiment
 The `sentiment.py` script populates the `sentiment` string through a long series of local Ollama calls. I found that this worked really well with llama3.1, but feel free to test out different models as well. The script parses through each row of the `db.sqlite` database `content` table and sends the `message` string in a request to Ollama with the prompt: "Give a one-word sentiment that best describes the following message. Respond with only one word."
