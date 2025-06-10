@@ -1,6 +1,6 @@
 # The Data Introspection Project
 
-The Data Introspection Project is the latest in my attempts to make something interesting out of my personal social media archives. Right now, the project consists of a few scripts that I use to consolidate data and information from Facebook and LinkedIn, create a local SQL database, and use a locally running ollama instance to assign a single word sentiment to each message/post.
+The Data Introspection Project is a collection of tools and ideas centered around the goal of reclaiming personal value from our online information. Right now, the project consists of a few scripts that I use to consolidate data and information from Facebook and LinkedIn, create a local SQL database, and use a locally running ollama instance to assign a single word sentiment to each message/post.
 
 ![image](https://github.com/user-attachments/assets/0c5a343c-58e3-4d9e-a235-452c6bac4247)
 _The incidents in 2010 and 2012 represent my immaturity in romantic collegiate relationships, if you were curious_
