@@ -19,7 +19,7 @@ CREATE TABLE content (
 ```
 The `load_to_sql.py` script also assigns the `platform` string automatically based on the file. This will be helpful in doing any kind of visualization or introspection that involves differentiating between how I talk on Facebook vs. LinkedIn.
 
-Optionally, you can create additional tables in the database to map relevant life characteristics (where you live, meaningful relationships) to join the main `content` table on. I have a `relationships` table with the following schema: 
+Optionally, you can create additional tables in the database to map relevant life characteristics (where you live, meaningful relationships) to join the main `content` table on. I have a `relationships` table with the following schema:
 
 ```
 CREATE TABLE relationships (
@@ -57,7 +57,7 @@ This was the most straightforward way that I could think of to visualize the mes
 ## Sentiment Score
 The `sentiment_score.py` script is similarly structured to the `sentiment.py` script, and is designed to be run after assigning a sentiment to each message. The sentiment score assigns a value between 0 (the most negative) and 1 (the most positive) for the sentiment of each row in the database. This took several hours to run using local Ollama. You would be advised to remove the print statement in the script, and again, batching here would be a significant improvement if the output of the LLM was consistent enough.
 
-![sentiment score graph](./sentiment_score_by_year.png)
+![sentiment score graph](./docs/img/sentiment_score_by_year.png)
 
 The above image is a graph of the output of the below query once the sentiment_score has been assigned.
 
