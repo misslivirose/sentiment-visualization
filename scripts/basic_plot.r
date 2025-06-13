@@ -3,7 +3,7 @@ library(dplyr)
 library(ggplot2)
 library(Polychrome)
 
-setwd("~/GitHub/sentiment-visualization")
+setwd("~/GitHub/data-introspection")
 
 con <- dbConnect(RSQLite::SQLite(), 
                       dbname = "./data/db.sqlite")
@@ -73,7 +73,7 @@ monthly_summary <- tbl(con, "content") %>%
   collect() %>%
   mutate(
     month_date = as.Date(sprintf("%d-%02d-01", YEAR, MONTH)),
-    PLATFORM   = factor(PLATFORM, levels = c("Facebook","LinkedIn"))
+    PLATFORM   = factor(PLATFORM, levels = c("Facebook","LinkedIn", "Discord"))
   )
 
 mean_of_means <- mean(monthly_summary$mean_sentiment)
@@ -89,7 +89,7 @@ p <- ggplot(monthly_summary,
              colour      = "gray50") +
   scale_colour_manual(
     name   = "PLATFORM",
-    values = c(Facebook = "#4267B2", LinkedIn = "#60AA14")
+    values = c(Facebook = "#4267B2", LinkedIn = "#60AA14", Discord="#9656ce")
   ) +
   scale_size_continuous(range = c(2, 12), name = "Row Count") +
   scale_y_continuous(

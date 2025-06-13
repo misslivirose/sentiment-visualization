@@ -1,5 +1,10 @@
 site_name: The Data Introspection Project
 site_url: https://misslivirose.github.io/data-introspection
+nav:
+  - Home: index.md
+  - Creating a Personal Database: personal-database.md
+  - Visualizations: visualizations.md
+  - Our Inspiration: projects-we-love.md
 theme:
   name: material
   palette:
