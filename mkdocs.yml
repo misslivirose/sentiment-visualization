@@ -3,6 +3,7 @@ site_url: https://misslivirose.github.io/data-introspection
 nav:
   - Home: index.md
   - Creating a Personal Database: personal-database.md
+  - Using AI for Sentiment Analysis: local-agent.md
   - Visualizations: visualizations.md
   - Our Inspiration: projects-we-love.md
 theme:
