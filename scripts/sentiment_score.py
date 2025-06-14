@@ -32,7 +32,7 @@ def main():
         sentiment_score = get_sentiment_score(sentiment)
 
         cursor.execute("UPDATE content SET sentiment_score = ? WHERE ROWID = ?", (sentiment_score, rowid))
-        print(f"ROWID {rowid}: sentiment set to '{sentiment_score}'")
+        print(f"ROWID {rowid}: sentiment_score set to '{sentiment_score}'")
 
     conn.commit()
     conn.close()
