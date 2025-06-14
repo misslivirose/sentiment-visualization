@@ -28,3 +28,11 @@ If you want to be more granular in your database, include a `DAY INTEGER` or sto
 
 ## Importing Content
 Basic python scripts can be used to extract information from the raw archive data and save them to your database. Converting to `.csv` as an intermediate step can be helpful to reduce the amount of re-processing if you want to change your database schema. The [load_to_sql.py](https://github.com/misslivirose/data-introspection/blob/main/scripts/load_to_sql.py) script gives an example of how to load `.csv` files into a database using the above schema.
+
+## Creating Supplemental Data Tables
+You may want to create additional tables to join with your messages to find additional trends and perform further reflection. One example could be to create a table in `db.sqlite` that stores relationships or places that you've lived.
+
+```
+CREATE TABLE relationships (YEAR integer, MONTH integer, PARTNER string);
+```
+The above schema shows how you might represent romantic relationships over time.

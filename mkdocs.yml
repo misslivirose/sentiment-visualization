@@ -5,6 +5,7 @@ nav:
   - Creating a Personal Database: personal-database.md
   - Using AI for Sentiment Analysis: local-agent.md
   - Visualizations: visualizations.md
+  - Related Work: related-work.md
   - Our Inspiration: projects-we-love.md
 theme:
   name: material

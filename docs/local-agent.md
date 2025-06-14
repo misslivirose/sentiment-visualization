@@ -9,7 +9,7 @@ Sentiment analysis is the practice of assessing the likely attitude or opinion e
 
 ## Using Ollama
 
-The Data Introspection Project contains several scripts that use [Ollama](https://ollama.com) to create entries in your [personal database](docs/personal-database.md) that:
+The Data Introspection Project contains several scripts that use [Ollama](https://ollama.com) to create entries in your [personal database](personal-database.md) that:
 
 1. Assigns a single word `sentiment` to each row in your database
 1. Assigns a `sentiment_score` to each row in the database based on the single word `sentiment` stored for each message
